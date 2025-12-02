@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+long long calculateFactorial(int n) {
+    long long result = 1;
+    int i;
+
+    if (n < 0) return 0;
+    if (n == 0) return 1;
+
+    for (i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    int num;
+    char choice;
+
+    do {
+        printf("Enter a non-negative integer for factorial: ");
+        if (scanf("%d", &num) != 1 || num < 0) {
+            printf("Invalid input. Factorial calculation stopped.\n");
+            break;
+        }
+
+        if (num > 20) {
+            printf("Warning: The result might overflow long long.\n");
+        }
+
+        long long factorialResult = calculateFactorial(num);
+        printf("Factorial of %d is %lld\n", num, factorialResult);
+
+        printf("Do you want to continue (y/n)? ");
+        scanf(" %c", &choice);
+
+    } while (choice == 'y' || choice == 'Y');
+
+    return 0;
+}
