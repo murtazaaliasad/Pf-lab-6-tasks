@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main() {
+    int values[10];
+    int count = 10;
+    int i;
+
+    printf("Enter 10 integer values:\n");
+    for (i = 0; i < count; i++) {
+        printf("Value %d: ", i + 1);
+        if (scanf("%d", &values[i]) != 1) {
+            printf("Invalid input. Stopping input.\n");
+            break;
+        }
+    }
+
+    printf("\nValues divisible by 7:\n");
+    int found = 0;
+    for (i = 0; i < count; i++) {
+        if (values[i] % 7 == 0) {
+            printf("%d ", values[i]);
+            found = 1;
+        }
+    }
+
+    if (!found) {
+        printf("No numbers divisible by 7 were entered.\n");
+    }
+    printf("\n");
+
+    return 0;
+}
