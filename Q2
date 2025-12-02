@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int multiply(int a, int b) {
+    int result = 0;
+    int abs_a = abs(a);
+    int abs_b = abs(b);
+    int i;
+
+    for (i = 0; i < abs_b; i++) {
+        result += abs_a;
+    }
+
+    if ((a < 0) ^ (b < 0)) {
+        return -result;
+    }
+    return result;
+}
+
+int divide(int a, int b) {
+    if (b == 0) {
+        printf("Error: Division by zero.\n");
+        return 0;
+    }
+    
+    int abs_a = abs(a);
+    int abs_b = abs(b);
+    int quotient = 0;
+
+    while (abs_a >= abs_b) {
+        abs_a -= abs_b;
+        quotient++;
+    }
+
+    if ((a < 0) ^ (b < 0)) {
+        return -quotient;
+    }
+    return quotient;
+}
+
+int main() {
+    int num1;
+    int num2;
+    int product;
+    int division_result;
+
+    printf("Enter two integers:\n");
+    if (scanf("%d %d", &num1, &num2) != 2) {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    product = multiply(num1, num2);
+    printf("Multiplication result of %d and %d: %d\n", num1, num2, product);
+
+    division_result = divide(num1, num2);
+    printf("Division result of %d by %d: %d\n", num1, num2, division_result);
+
+    return 0;
+}
